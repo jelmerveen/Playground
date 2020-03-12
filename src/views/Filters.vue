@@ -3,9 +3,13 @@
     <h1>Mock filters</h1>
     <div class="container">
       <div class="flex">
-        <checkboxes :items="checkboxes" :selected="selected" @input="changeSelection" />
+        <checkboxes
+          :items="checkboxesList"
+          :selected="selectedCheckboxOptions"
+          @input="changeSelection"
+        />
       </div>
-      <cards :items="showCaredsBasedOnSelection" />
+      <cards :items="showCardsBasedOnSelection" />
     </div>
   </div>
 </template>
@@ -17,26 +21,51 @@ export default {
   components: { checkboxes, cards },
   data: () => {
     return {
-      checkboxes: [
+      checkboxesList: [
         { id: 1, value: 'A' },
         { id: 2, value: 'B' },
         { id: 3, value: 'C' },
         { id: 4, value: 'D' },
         { id: 5, value: 'E' }
       ],
-      selected: ['A', 'B', 'C', 'D', 'E']
+      selectedCheckboxes: ['A', 'B', 'C', 'D', 'E']
     }
   },
   computed: {
-    showCaredsBasedOnSelection() {
-      return this.checkboxes.filter(checkbox =>
-        this.selected.includes(checkbox.value)
+    showCardsBasedOnSelection() {
+      return this.checkboxesList.filter(checkbox =>
+        this.selectedCheckboxOptions.includes(checkbox.value)
       )
+    },
+    selectedCheckboxOptions() {
+      return this.selectedCheckboxes
+    }
+  },
+  watch: {
+    '$route.query': function(query) {
+      if (query.selectedCheckboxes) {
+        this.selectedCheckboxes = query.selectedCheckboxes.split(',')
+      }
     }
   },
   methods: {
     changeSelection(val) {
-      this.selected = val
+      this.selectedCheckboxes = val
+      this.$router
+        .push({
+          name: 'Filters',
+          query: { selectedCheckboxes: encodeURI(val) }
+        })
+        .catch(err => {
+          if (err._name !== 'NavigationDuplicated') console.log(err)
+        })
+    }
+  },
+  beforeMount() {
+    if (this.$route.query) {
+      if (this.$route.query.selectedCheckboxes) {
+        this.selectedCheckboxes = this.$route.query.selectedCheckboxes.split(',')
+      }
     }
   }
 }
