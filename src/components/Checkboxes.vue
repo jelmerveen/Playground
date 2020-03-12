@@ -9,10 +9,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: "checkboxes",
-  props: ["items", "selected"],
+  props: {items: [], selected: [] },
   data: () => {
     return {
       trigger: false,
