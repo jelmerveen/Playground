@@ -1,4 +1,4 @@
-# mock_app
+# Playground
 
 ## Project setup
 ```
