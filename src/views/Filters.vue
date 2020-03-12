@@ -55,10 +55,10 @@ export default {
         .push({
           name: 'Filters',
           query: { selectedCheckboxes: encodeURI(val) }
-        })
-        .catch(err => {
-          if (err._name !== 'NavigationDuplicated') console.log(err)
-        })
+        }).catch(() => {})
+        // .catch(err => {
+        //   if (err._name !== 'NavigationDuplicated') console.log(err)
+        // })
     }
   },
   beforeMount() {
