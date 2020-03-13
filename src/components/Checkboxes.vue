@@ -2,6 +2,7 @@
   <div class="Checkbox-Mock-Component">
     <div :key="checkbox.id + checkbox.value" v-for="checkbox in checkboxList">
       <label>
+        <!-- enable is needed, else the selection change is fired and an input event emitted -->
         <input type="checkbox" :value="checkbox.value" v-model="checkboxSelection" @click="enable" />
         {{ checkbox.value }}
       </label>
