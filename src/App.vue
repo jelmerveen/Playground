@@ -26,7 +26,7 @@ export default {
       const theme = document.createElement('link')
       theme.className = 'theme-switcher'
       theme.rel = 'stylesheet'
-      theme.href = `/css/${this.selectedTheme}`
+      theme.href = `https://jelmerveen.github.io/Playground/css/${this.selectedTheme}`
       document.getElementsByTagName('head')[0].append(theme)
       document.getElementsByClassName('theme-switcher')[0].remove();
     },
