@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21b158"],{bdee:function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("h2",[e._v("I'm a header 2, in 2.vue, is there a connection? ")])},c=[],u={name:"step-2"},r=u,s=t("2877"),i=Object(s["a"])(r,a,c,!1,null,null,null);n["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d21b158.c67de2a0.js.map
